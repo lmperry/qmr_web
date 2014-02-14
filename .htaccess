@@ -1,0 +1,4 @@
+AuthType WebAuth
+Require valid-user
+Options All -Indexes
+
