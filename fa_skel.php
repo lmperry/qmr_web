@@ -64,6 +64,8 @@ $current_md = "";
 $current_rd = "";
 $current_ad = "";
 $current_t1 = "";
+$current_tv = "";
+$current_si = "";
 $current_visual = "";
 $figureszip = $tcwf . "_figures.zip";
 $datazip = $tcwf . "_data.zip";
@@ -147,6 +149,12 @@ $visualdir = "figures/visual";
                 <?php
                     if(is_dir($t1dir)) {
                         echo "<li class=\"$current_t1\"><a href=\"t1.php\">Quantitative T1</a></li>";
+                    }
+                    if(is_dir($tvdir)) {
+                        echo "<li class=\"$current_tv\"><a href=\"tv.php\">Quantitative TV</a></li>";
+                    }
+                    if(is_dir($sidir)) {
+                        echo "<li class=\"$current_si\"><a href=\"si.php\">Quantitative SIR</a></li>";
                     }
                     if(is_dir($addir)) {
                         echo "<li class=\"$current_ad\"><a href=\"ad.php\">Axial Diffusivity</a></li>";

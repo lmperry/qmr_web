@@ -34,7 +34,7 @@ if ((window.screen.width < 640) || (window.screen.height < 640)){document.write(
 <!-- CSS Instructions: Select a combination of the following body classes e.g. <body class="two-sidebars drawer wide ie6-3col">
 
 [two-line-header]
-Display the site name header on two-lines.  Use the template properties "site_name_1" and 
+Display the site name header on two-lines.  Use the template properties "site_name_1" and
 "site_name_2" to set each line of the header.
 
 [two-sidebars] or [sidebar-left] or [sidebar-right]
@@ -53,7 +53,7 @@ Enable styling for advanced templates such as portal or topic pages.
 -->
 
 
-<?php 
+<?php
 // Decalre php variables //
 $tcwf = basename(getcwd());
 $thename = "Analysis Summary";
@@ -64,6 +64,8 @@ $current_md = "";
 $current_rd = "";
 $current_ad = "";
 $current_t1 = "";
+$current_tv = "";
+$current_si = "";
 $current_visual = "";
 $figureszip = $tcwf . "_figures.zip";
 $datazip = $tcwf . "_data.zip";
@@ -83,11 +85,11 @@ $visualdir = "figures/visual";
 <body class="sidebar-left">
 <div id="skipnav"><a href="#content">Skip navigation</a></div>
 <div id="su-wrap"> <!-- #su-wrap start -->
-<div id="su-content"> <!-- #su-content start --> 
+<div id="su-content"> <!-- #su-content start -->
 <!-- Start #layout -->
-<div id="layout"> 
+<div id="layout">
   <!-- Start #wrapper -->
-  <div id="wrapper"> 
+  <div id="wrapper">
     <!-- Start #header -->
     <div id="header">
       <div class="container">
@@ -97,21 +99,21 @@ $visualdir = "figures/visual";
             </div>
           </div>
         </div>
-        <!-- End #header --> 
-        
+        <!-- End #header -->
+
         <!-- Start #container -->
         <div id="container">
-            <?php 
+            <?php
               print "<h1 class=\"\">$thename</h1>"
             ?>
           <!-- Start #content -->
-          <div id="content"> 
+          <div id="content">
             <!-- Start #center -->
-            <div id="center"> <!-- InstanceBeginEditable name="content_main" --> 
+            <div id="center"> <!-- InstanceBeginEditable name="content_main" -->
          <!-- START CONTENT -->
          <hr>
               <p>
-              
+
               <?php
               // IMAGE LOADING AND DISPLAY
               //path to directory to scan for images
@@ -125,8 +127,8 @@ $visualdir = "figures/visual";
                 } else {
                         echo "<h2>Still working...</h2>";
                 }
-                
-                
+
+
                 $images = glob($directory . "*.png");
                 foreach($images as $i) {
                     $path = explode('.', ${'i'});
@@ -137,10 +139,10 @@ $visualdir = "figures/visual";
                 }
                 ?>
               </p>
-              
+
               <!-- InstanceEndEditable --> </div>
-            <!-- End #center --> 
-            
+            <!-- End #center -->
+
             <!-- Start #sidebar-left (Removable) -->
             <div id="sidebar-left" class="sidebar">
               <ul class="nav">
@@ -153,6 +155,12 @@ $visualdir = "figures/visual";
                 <?php
                     if(is_dir($t1dir)) {
                         echo "<li class=\"$current_t1\"><a href=\"t1.php\">Quantitative T1</a></li>";
+                    }
+                    if(is_dir($tvdir)) {
+                        echo "<li class=\"$current_tv\"><a href=\"tv.php\">Quantitative TV</a></li>";
+                    }
+                    if(is_dir($sidir)) {
+                        echo "<li class=\"$current_si\"><a href=\"si.php\">Quantitative SIR</a></li>";
                     }
                     if(is_dir($addir)) {
                         echo "<li class=\"$current_ad\"><a href=\"ad.php\">Axial Diffusivity</a></li>";
@@ -175,7 +183,7 @@ $visualdir = "figures/visual";
                 <li class="<?php echo "$current_ad";?>"><a href="ad.php">Axial Diffusivity</a></li>
                 <li class="<?php echo "$current_fa";?>"><a href="fa.php">Fractional Anisotropy</a></li>
                 <li class="<?php echo "$current_md";?>"><a href="md.php">Mean Diffusivity</a></li>
-                <li class="<?php echo "$current_rd";?>"><a href="rd.php">Radial Diffusivity</a></li> 
+                <li class="<?php echo "$current_rd";?>"><a href="rd.php">Radial Diffusivity</a></li>
                 -->
                 <br><br><h2>Download</h2>
                 <li><a href="<?php echo $figureszip; ?>">Figures</a></li>
@@ -190,23 +198,23 @@ $visualdir = "figures/visual";
               </ul>
             </div>
             <!-- End #sidebar-left (Removable) -->
-            
+
             <!-- Start #sidebar-right (Removable) -->
             <div id="sidebar-right" class="sidebar"> </div>
             <!-- End #sidebar-right (Removable) -->
             <div class="content_clear"></div>
           </div>
-          <!-- End #content --> 
+          <!-- End #content -->
         </div>
-        <!-- End #container --> 
+        <!-- End #container -->
       </div>
-      <!-- End #wrapper --> 
+      <!-- End #wrapper -->
     </div>
-    <!-- End #layout --> 
+    <!-- End #layout -->
   </div>
-  <!-- #su-content end --> 
+  <!-- #su-content end -->
 </div>
-<!-- #su-wrap end --> 
+<!-- #su-wrap end -->
 
 <!-- Global footer snippet start -->
 <div id="global-footer">
@@ -227,11 +235,11 @@ $visualdir = "figures/visual";
       <div class="clear"></div>
       <p class="copyright vcard">&copy; <span class="fn org">Stanford University</span>, <span class="adr"> <span class="locality">Stanford</span>, <span class="region">California</span> <span class="postal-code">94305</span> </span></p>
     </div>
-    <!-- .row end --> 
+    <!-- .row end -->
   </div>
-  <!-- .container end --> 
+  <!-- .container end -->
 </div>
-<!-- global-footer end --> 
+<!-- global-footer end -->
 <!-- Global footer snippet end -->
 </body>
 <!-- InstanceEnd --></html>
