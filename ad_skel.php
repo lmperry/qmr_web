@@ -172,16 +172,13 @@ $visualdir = "figures/visual";
                         echo "<li class=\"$current_visual\"><a href=\"visual.php\">Visual Pathways</a></li>";
                     }
                  ?>
-                <!--
-                <li class="<?php echo "$current_t1";?>"><a href="t1.php">Quantitative T1</a></li>
-                <li class="<?php echo "$current_ad";?>"><a href="ad.php">Axial Diffusivity</a></li>
-                <li class="<?php echo "$current_fa";?>"><a href="fa.php">Fractional Anisotropy</a></li>
-                <li class="<?php echo "$current_md";?>"><a href="md.php">Mean Diffusivity</a></li>
-                <li class="<?php echo "$current_rd";?>"><a href="rd.php">Radial Diffusivity</a></li>
-                -->
-                <br><br><h2>Download</h2>
-                <li><a href="<?php echo $figureszip; ?>">Figures</a></li>
-                <li><a href="<?php echo $datazip; ?>">Analyzed Data</a></li>
+                <?php
+                if( is_file($figureszip) && is_file($datazip) ) {
+                    echo "<br><br><h2>Download</h2>";
+                    echo "<li><a href=\"$figureszip\">Figures</a></li>";
+                    echo "<li><a href=\"$datazip\">Analyzed Data</a></li>";
+                }
+                ?>
                 <br><br><h2>Processing Info</h2>
                 <li><a href="https://github.com/vistalab/mrQ/blob/master/README.md" target="_blank">MRQ Pipeline</a></li>
                 <li><a href="http://vistalab.stanford.edu/newlm/index.php/AFQ" target="_blank">AFQ Pipeline</a></li>
