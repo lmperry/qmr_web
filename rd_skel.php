@@ -67,6 +67,8 @@ $current_t1 = "";
 $current_tv = "";
 $current_si = "";
 $current_visual = "";
+$current_log = "";
+$logfile = "log";
 $figureszip = $tcwf . "_figures.zip";
 $datazip = $tcwf . "_data.zip";
 $imndx = 1; // should be 0 or 1
@@ -179,17 +181,24 @@ $visualdir = "figures/visual";
                     echo "<li><a href=\"$datazip\">Analyzed Data</a></li>";
                 }
                 ?>
-                <br><br><h2>Processing Info</h2>
+                <?php
+                    if (file_exists("$logfile")) {
+                       echo "<br><br><h2>Processing Info</h2>";
+                       echo "<li class=\"$current_log\"><a href=\"log.php\">Log File</a></li>";
+                   }
+                ?>
+                <br><br><h2>Resources</h2>
                 <li><a href="https://github.com/vistalab/mrQ/blob/master/README.md" target="_blank">MRQ Pipeline</a></li>
                 <li><a href="http://vistalab.stanford.edu/newlm/index.php/AFQ" target="_blank">AFQ Pipeline</a></li>
                 <li><a href="http://scarlet.stanford.edu/nims" target="_blank">Vista Lab NIMS</a></li>
                 <li><a href="http://vistalab.stanford.edu" target="_blank">Stanford VISTA Lab</a></li>
                 <br><br><h2>Funding</h2>
-                This research project is funded by the Weston Havens Foundation
+                <li><a href="https://www.simonsfoundation.org/" target=_blank>Simons Foundation</a></li>
+                <li><a href="http://www.nsf.gov/" target="_blank">National Science Foundation</a></li>
+                <li>Weston Havens Foundation</li>
               </ul>
             </div>
             <!-- End #sidebar-left (Removable) -->
-            
             <!-- Start #sidebar-right (Removable) -->
             <div id="sidebar-right" class="sidebar"> </div>
             <!-- End #sidebar-right (Removable) -->
