@@ -188,13 +188,6 @@ $visualdir = "figures/visual";
                 }
                 ?>
                 <?php
-                if( is_file($figureszip) && is_file($datazip) ) {
-                    echo "<br><br><h2>Download</h2>";
-                    echo "<li><a href=\"$figureszip\">Figures</a></li>";
-                    echo "<li><a href=\"$datazip\">Analyzed Data</a></li>";
-                }
-                ?>
-                <?php
                     if (file_exists("$logfile")) {
                        echo "<br><br><h2>Processing Info</h2>";
                        echo "<li class=\"$current_log\"><a href=\"log.php\">Log File</a></li>";

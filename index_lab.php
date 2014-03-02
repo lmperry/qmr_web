@@ -65,8 +65,6 @@ $directory = "figures/";
 //$current_rd = "";
 //$current_ad = "";
 //$current_t1 = "";
-$figureszip = "figures.zip";
-$datazip = "data.zip";
 $imndx = 1; // should be 0 or 1
 ?>
 
@@ -106,7 +104,7 @@ $imndx = 1; // should be 0 or 1
               <br>
              <!--<img src="http://nims.stanford.edu/wp-content/uploads/2013/08/NIMS_r2_100.png" alt="NIMS">-->
              <img src="http://scarlet.stanford.edu/westonhavens/results/examplelab/NIMS_banner.png" alt="NIMS" width="75%" height=90px>
-              <p> This is your lab's main page. Here you can view the progress of your data as it moves through the pipeline. You can view the results by clicking on the data identifier. Below the link you will find information regarding the status of your processing. If you would like to download the figures or the processed data you will find those links in the sidebar on the page for each dataset. </p>
+              <p>This is the main page for your experiment. Here you can view the progress of your data as it moves through the pipeline. You can view the results by clicking on the data identifier. Below the link you will find information regarding the status of your processing. If you would like to download the figures or the processed data you will find those links in the sidebar on the page for each dataset. </p>
               <?php
                 echo "<h2><strong>$str's data:</strong></h2>";
                 echo "<ul>";
@@ -142,15 +140,17 @@ $imndx = 1; // should be 0 or 1
                     echo "<li><a href=\"$d\">$d</a></li>";
                 }
                 ?>
-                <br><br><h2>Processing Info</h2>
+               <br><br><h2>Resources</h2>
                 <li><a href="https://github.com/vistalab/mrQ/blob/master/README.md" target="_blank">MRQ Pipeline</a></li>
                 <li><a href="http://vistalab.stanford.edu/newlm/index.php/AFQ" target="_blank">AFQ Pipeline</a></li>
                 <li><a href="http://scarlet.stanford.edu/nims" target="_blank">Vista Lab NIMS</a></li>
                 <li><a href="http://vistalab.stanford.edu" target="_blank">Stanford VISTA Lab</a></li>
                 <br><br><h2>Funding</h2>
-                This research project is funded by the Weston Havens Foundation
+                <li><a href="https://www.simonsfoundation.org/" target=_blank>Simons Foundation</a></li>
+                <li><a href="http://www.nsf.gov/" target="_blank">National Science Foundation</a></li>
+                <li>Weston Havens Foundation</li>
               </ul>
-            </div>
+            </div> 
             <!-- End #sidebar-left (Removable) -->
             
             <!-- Start #sidebar-right (Removable) -->
