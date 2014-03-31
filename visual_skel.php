@@ -2,7 +2,7 @@
 <html><!-- InstanceBegin template="/Templates/basic-nav.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>VISTA Lab | Stanford University</title>
+<title>QMR | Stanford University</title>
 <!-- InstanceEndEditable -->
 <script type="text/javascript">
 <!--
@@ -151,6 +151,13 @@ $visualdir = "figures/visual";
                 <a href="../"><?php echo "$labname<br>";?></a>
                 <br><br><h2>Data Identifier</h2>
                 <?php print "$tcwf<br>"?>
+                <?php
+                // Get the metadata for this subject, if it's there
+                if (file_exists('meta.txt')) {
+                    echo  "<hr><br><br><h2>Subject Info</h2>";
+                    $text= file_get_contents('meta.txt');
+                    echo "$text"; }
+                ?> 
                 <br><br><h2>View Results</h2>
                 <li class="<?php echo "$current_as";?>"><a href="index.php">Analysis Summary</a></li>
                 <?php
