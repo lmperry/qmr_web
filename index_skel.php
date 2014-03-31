@@ -128,6 +128,9 @@ $visualdir = "figures/visual";
                     echo "<img src=\"figures/000_RotatingFibers.gif\" align=\"center\"</img><hr><br>" ;
                 } else {
                         echo "<h2>Still working...</h2>";
+                        if (file_exists($logfile)) { 
+                            echo "You can track progress by viewing the <a href=\"log.php\">log file.</a>";
+                        }
                 }
 
 
