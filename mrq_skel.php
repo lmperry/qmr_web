@@ -56,8 +56,8 @@ Enable styling for advanced templates such as portal or topic pages.
 <?php 
 // Decalre php variables //
 $tcwf = basename(getcwd());
-$thename = "Quantitative SIR";
-$directory = "figures/SI/";
+$thename = "mrQ Maps";
+$directory = "figures/mrq/";
 $current_as = "";
 $current_fa = "";
 $current_md = "";
@@ -65,14 +65,14 @@ $current_rd = "";
 $current_ad = "";
 $current_t1 = "";
 $current_tv = "";
-$current_si = "current";
+$current_si = "";
 $current_visual = "";
 $current_log = "";
-$current_mrq = "";
+$current_mrq = "current";
 $logfile = "log";
 $figureszip = $tcwf . "_figures.zip";
 $datazip = $tcwf . "_data.zip";
-$imndx = 1; // should be 0 or 1
+$imndx = 2; // should be 0 or 1
 $labdir = dirname(getcwd());
 $labname = basename($labdir);
 $fadir = "figures/fa";
@@ -124,14 +124,14 @@ $mrqdir = "figures/mrq";
                // This is set above // $directory = "images/";
                 //get all image files with a .jpg extension.
 
-                $images = glob($directory . "*.*g*");
+                $images = glob($directory . "*.png");
                 if(empty($images)) {
                     echo "<h2>Still working...</h2>";
                     }
                 foreach($images as $i) {
                     $path = explode('.', ${'i'});
                     $imname = explode('/', $path[0]);
-                   // echo "<span style=\"text-align:left\";><h3><a href=\"${i}\">$imname[$imndx]</a></h3></span>" ;
+                    echo "<span style=\"text-align:left\";><h3><a href=\"${i}\">$imname[$imndx]</a></h3></span>" ;
                     echo "<a href=\"${i}\"><img src=\"${i}\" width=\"100%\" align=\"center\"</img></a>" ;
                     echo "<p>&nbsp;</p><hr> &nbsp;";
                 }

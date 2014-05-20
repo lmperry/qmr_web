@@ -67,6 +67,7 @@ $current_t1 = "";
 $current_tv = "current";
 $current_si = "";
 $current_log = "";
+$current_mrq = "";
 $logfile = "log";
 $figureszip = $tcwf . "_figures.zip";
 $datazip = $tcwf . "_data.zip";
@@ -81,6 +82,7 @@ $t1dir = "figures/T1";
 $sidir = "figures/SI";
 $tvdir = "figures/TV";
 $visualdir = "figures/visual";
+$mrqdir = "figures/mrq";
 ?>
 
 <body class="sidebar-left">
@@ -175,6 +177,9 @@ $visualdir = "figures/visual";
                     }
                     if(is_dir($rddir)) {
                         echo "<li class=\"$current_rd\"><a href=\"rd.php\">Radial Diffusivity</a></li>";
+                    }
+                    if(is_dir($mrqdir)) {
+                        echo "<li class=\"$current_mrq\"><a href=\"mrq.php\">mrQ Maps</a></li>";
                     }
                     if(is_dir($visualdir)) {
                         echo "<li class=\"$current_visual\"><a href=\"visual.php\">Visual Pathways</a></li>";

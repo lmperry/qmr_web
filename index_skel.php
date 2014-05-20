@@ -68,10 +68,11 @@ $current_tv = "";
 $current_si = "";
 $current_visual = "";
 $current_log = "";
+$current_mrq = "";
 $logfile = "log";
 $figureszip = $tcwf . "_figures.zip";
 $datazip = $tcwf . "_data.zip";
-$imndx = 1; // should be 0 or 1
+$imndx = 2; // should be 0 or 1
 $labdir = dirname(getcwd());
 $labname = basename($labdir);
 $fadir = "figures/fa";
@@ -82,6 +83,7 @@ $t1dir = "figures/T1";
 $sidir = "figures/SI";
 $tvdir = "figures/TV";
 $visualdir = "figures/visual";
+$mrqdir = "figures/mrq/";
 ?>
 
 <body class="sidebar-left">
@@ -114,8 +116,10 @@ $visualdir = "figures/visual";
             <div id="center"> <!-- InstanceBeginEditable name="content_main" -->
          <!-- START CONTENT -->
          <hr>
-              <p>
-
+<p style="text-align:right">
+<a href="#meta">Metadata</a>  |  <a href="#figures"> Summary Figures</a>
+</p>
+             <p>
               <?php
               // IMAGE LOADING AND DISPLAY
               //path to directory to scan for images
@@ -126,14 +130,174 @@ $visualdir = "figures/visual";
 
                 if (file_exists($fibergif)) {
                     echo "<img src=\"figures/000_RotatingFibers.gif\" align=\"center\"</img><hr><br>" ;
-                } else {
+                } 
+               if ( (!is_dir($mrqdir)) && (!file_exists($fibergif)) ) {
                         echo "<h2>Still working...</h2>";
                         if (file_exists($logfile)) { 
-                            echo "You can track progress by viewing the <a href=\"log.php\">log file.</a>";
+                            echo "You can track progress by viewing the <a href=\"log.php\">log file.</a><br>&nbsp;";
                         }
                 }
+                ?>
+
+<!-- HERE COMES THE TABLE -->
+<h2><a id="meta">Metadata</a></h2>
+<style>
+table,th,td
+{
+border:1px solid lightgray;
+/*border-collapse:collapse;*/
+}
+
+th,td
+{
+padding:5px;
+vertical-align:top;
+}
+
+table {
+width:100%;
+}
+
+ul {
+    line-height:1.3em;
+    list-style-type:circle;
+}
+li {
+    font-size:1.1em;
+}
+</style>
+<!--<h1>Processing information</h1> -->
+<table>
+<colgroup>
+    <col span="1" style="width:20%">
+</colgroup>
+<!-- Set up the headers for the table -->
+<tr>
+<th></th>
+<th><h3>Your Data</h3></th>
+<th><h3>Population Data</h3></th>
+</tr>
+
+<!-- ROW 1-->
+<tr>  
+  <td><h4>Demographics</h4> </td>
+    <!-- USER'S DATA --> 
+    <td>
+    <ul>
+    <?php
+    if (file_exists("info_subject.txt")) {
+        $text = file_get_contents("info_subject.txt");
+        echo $text;
+    }
+    ?>
+    </ul>
+    </td>
+    <!-- DATABASE'S DATA --> 
+    <td>
+    <ul>
+    <li>Age: 31.2 (mean)</li>
+    <li>Sex: 53 F, 51 M </li> 
+    </ul>
+  </td>
+</tr>
+
+<!-- ROW 2 -->
+<tr>  
+  <td><h4> mrQ Parameters</h4> </td>
+  <!-- USER'S DATA --> 
+  <td>
+    <ul>
+    <?php
+    if (file_exists("info_mrq.txt")) {
+        echo file_get_contents("info_mrq.txt");
+    }
+    ?>
+    </ul>
+    </td>
+    <!-- DATABASE'S DATA -->
+    <td>
+    <ul> 
+    <li>Flip Angles: 4 10 20 30 <em>deg</em></li>
+    <li>Inversion Times: 1200    50   2400   400 <em>msec</em></li> 
+    <li>Resolution: 1 x 1 x 1 <em>mm </em></li>
+    </ul>
+  </td>
+</tr>
+
+<!-- ROW 3 -->
+<tr>
+  <td><h4> Diffusion Parameters</h4></td>
+  <!-- USER'S DATA --> 
+  <td> 
+    <ul>
+    <?php
+    if (file_exists("info_dw.txt")) {
+        $text = file_get_contents("info_dw.txt");
+        echo $text; 
+    }
+    ?>
+    </ul>   
+    </td>
+    <!-- DATABASE'S DATA --> 
+    <td>
+    <ul>
+    <li>B-Value: 2000 </li>
+    <li>Diffusion Directions: 96</li> 
+    <li>Resolution: 2 x 2 x 2 <em>mm</em> </li>
+    <li>Noise Calculation Method: b0 <br>(standard deviation of b0)</li>
+    <li>Tensor Fit Method: rt <br>(robust tensor fit)</li>
+    </ul>
+  </td>
+</tr>
+
+</table>
 
 
+<!-- If the file exists, display it, otherwise display the template... -->
+
+<!-- NEW TABLE -->
+<!-- <h2>Analysis Information</h2> -->
+<table>
+<colgroup>
+    <col span="1" style="width:20%">
+</colgroup>
+<!--
+<tr></tr><th></th><th><h3>Analysis Details</h3></th></tr>
+-->
+<tr>
+    <td><h4>Analysis Details</h4></td>
+    <td>
+        <ul>
+        <?php
+        if ( file_exists("info_methods.txt") ) {
+            echo file_get_contents("info_methods.txt");
+            echo "<li>Population Age Distribution: 7-12 (n=32); 13-18 (n=14); 19-29 (n=12); 30-39 (n=11); 40-49 (n=7); 50-59 (n=9); 60-69 (n=8); 70-85 (n=9).</li> <li>Dark gray bars are 1 standard deviation from the mean</li> <li>Light gray bars are 2 standard deviations from the mean</li>";
+        }
+        ?>
+        </ul>
+    </td>
+</tr>
+
+<tr>
+    <td><h4>Processing Notes</h4></td>
+    <td>
+        <ul>
+        <?php
+        if ( file_exists("info_message.txt") ) {
+            echo file_get_contents("info_message.txt");
+        }
+        ?>
+        </ul>
+    </td>
+</tr>
+</table>
+</p>
+<p>
+&nbsp;
+
+            <h3><a id="figures">Summary Figures</a></h3>
+            
+            <?php
                 $images = glob($directory . "*.png");
                 foreach($images as $i) {
                     $path = explode('.', ${'i'});
@@ -142,6 +306,19 @@ $visualdir = "figures/visual";
                     echo "<a href=\"${i}\"><img src=\"${i}\" width=\"100%\" align=\"center\"</img></a>" ;
                     echo "<p>&nbsp;</p><hr> &nbsp;";
                 }
+
+               if ( (is_dir($mrqdir)) && (!file_exists($fibergif)) ) {
+                    //echo "<h2>mrQ Maps</h2><hr>";
+                    $images = glob($mrqdir . "*.png");
+                    foreach($images as $i) {
+                        $path = explode('.', ${'i'});
+                        $imname = explode('/', $path[0]);
+                        echo "<span style=\"text-align:left\";><h3><a href=\"${i}\">$imname[$imndx]</a></h3></span>" ;
+                        echo "<a href=\"${i}\"><img src=\"${i}\" width=\"100%\" align=\"center\"</img></a>" ;
+                        echo "<p>&nbsp;</p><hr> &nbsp;";
+                    }
+               }
+
                 ?>
               </p>
 
@@ -185,6 +362,9 @@ $visualdir = "figures/visual";
                     }
                     if(is_dir($rddir)) {
                         echo "<li class=\"$current_rd\"><a href=\"rd.php\">Radial Diffusivity</a></li>";
+                    }
+                    if(is_dir($mrqdir)) {
+                        echo "<li class=\"$current_mrq\"><a href=\"mrq.php\">mrQ Maps</a></li>";
                     }
                     if(is_dir($visualdir)) {
                         echo "<li class=\"$current_visual\"><a href=\"visual.php\">Visual Pathways</a></li>";

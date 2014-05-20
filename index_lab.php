@@ -2,7 +2,7 @@
 <html><!-- InstanceBegin template="/Templates/basic-nav.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>NIMS | Stanford University</title>
+<title>QMR | Stanford University</title>
 <!-- InstanceEndEditable -->
 <script type="text/javascript">
 <!--
@@ -57,7 +57,7 @@ Enable styling for advanced templates such as portal or topic pages.
 // Decalre php variables //
 $tcwf = basename(getcwd());
 $str = strtoupper($tcwf); 
-$pagename = "Welcome <em>$str!</em>";
+$pagename = "<em>$str</em>";
 $directory = "figures/";
 //$current_as = "current";
 //$current_fa = "";
@@ -102,11 +102,13 @@ $imndx = 1; // should be 0 or 1
          <hr>
               <p>
               <br>
-             <!--<img src="http://nims.stanford.edu/wp-content/uploads/2013/08/NIMS_r2_100.png" alt="NIMS">-->
-             <img src="http://scarlet.stanford.edu/westonhavens/results/examplelab/NIMS_banner.png" alt="NIMS" width="75%" height=90px>
-              <p>This is the main page for your experiment. Here you can view the progress of your data as it moves through the pipeline. You can view the results by clicking on the data identifier. Below the link you will find information regarding the status of your processing. If you would like to download the figures or the processed data you will find those links in the sidebar on the page for each dataset. </p>
+             <img src="http://nims.stanford.edu/wp-content/uploads/2013/08/NIMS_r2_100.png" alt="NIMS" width="100%" height="90px">
+<!--             <img src="http://scarlet.stanford.edu/westonhavens/results/examplelab/NIMS_banner.png" alt="NIMS" width="100%" height=90px>-->
+<!--             <img src="http://scarlet.stanford.edu/westonhavens/media/NIMS_bw.png" alt="NIMS" width="100%" height=90px>-->
+              <p><span style="font-size:1.1em;">This is the main page for your experiment. Here you can view the progress of your data as it moves through the pipeline. You can view the results by clicking on the data identifier, wich will take you to the results page for that session. On each results page you will find links where you can download the processed data and figures.</span> </p>
               <?php
-                echo "<h2><strong>$str's data:</strong></h2>";
+                //echo "<h2><strong>$str data:</strong></h2>";
+                echo "<hr><h2>Data currently in the pipeline:</h2>";
                 echo "<ul>";
                 $dirs = array_filter(glob('*'), 'is_dir');
                 foreach($dirs as $i) {
@@ -130,9 +132,13 @@ $imndx = 1; // should be 0 or 1
             <!-- Start #sidebar-left (Removable) -->
             <div id="sidebar-left" class="sidebar">
               <ul class="nav">
-               <hr><br><h2>Lab</h2>
+                <hr>
+                <br>
+                <!--<h2>Lab</h2>
                 <?php print "$tcwf<br>"?>
-                <br><br><h2>View Data</h2>
+                <br>
+                <br>-->
+                <h2>View Data</h2>
                 <?php
                 $dirs = array_filter(glob('*'), 'is_dir');
                 foreach($dirs as $d) {
