@@ -1,4 +1,4 @@
-scripts
+WH WEB
 =======
 
-Stanford Scripts
+> HTML and PHP code for the WH project in the Wandell Lab. 
