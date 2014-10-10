@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html><!-- InstanceBegin template="/Templates/basic-nav.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
-<!-- InstanceBeginEditable name="doctitle" -->
 <title>QMR | Stanford University</title>
-<!-- InstanceEndEditable -->
 <script type="text/javascript">
-<!--
-if ((window.screen.width < 640) || (window.screen.height < 640)){document.write('<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1">')}
-//-->
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="shortcut icon" type="image/x-icon" href="https://www.stanford.edu/favicon.ico">
@@ -17,41 +12,13 @@ if ((window.screen.width < 640) || (window.screen.height < 640)){document.write(
 <link rel="stylesheet" type="text/css" href="https://www.stanford.edu/stanfordmodern/v2.5/css/ceebox-min.css" media="all">
 <link rel="stylesheet" type="text/css" href="https://www.stanford.edu/stanfordmodern/v2.5/css/mobile.css" media="only screen and (max-width: 640px)">
 <link rel="stylesheet" type="text/css" href="https://www.stanford.edu/stanfordmodern/v2.5/css/print.css" media="print">
-<!--[if IEMobile]>
-<link rel="stylesheet" type="text/css" href="https://www.stanford.edu/stanfordmodern/v2.5/css/mobile.css" media="screen">
-<link rel="stylesheet" type="text/css" href="https://www.stanford.edu/stanfordmodern/v2.5/css/wp7.css" media="screen">
-<![endif]-->
 <script type="text/javascript" src="https://www.stanford.edu/stanfordmodern/jquery/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="https://www.stanford.edu/stanfordmodern/v2.5/js/stanfordmodern.js"></script>
 <script type="text/javascript" src="https://www.stanford.edu/stanfordmodern/v2.5/js/jquery.swfobject.js"></script>
 <script type="text/javascript" src="https://www.stanford.edu/stanfordmodern/v2.5/js/jquery.ceebox-min.js"></script>
-<!-- InstanceBeginEditable name="head" -->
-<!-- Custom -->
 <link rel="stylesheet" type="text/css" href="/westonhavens/custom/custom.css">
 <script type="text/javascript" src="/westonhavens/custom/custom.js"></script>
 </head>
-<!-- Stanford Modern Templates Version 2.5 -->
-<!-- CSS Instructions: Select a combination of the following body classes e.g. <body class="two-sidebars drawer wide ie6-3col">
-
-[two-line-header]
-Display the site name header on two-lines.  Use the template properties "site_name_1" and 
-"site_name_2" to set each line of the header.
-
-[two-sidebars] or [sidebar-left] or [sidebar-right]
-Create a two or three column layout
-Affected div(s): #sidebar-left or #sidebar-right
-
-[nav] or [drawer]
-Add horizontal navigation or horizontal navigation with expandable drawer (5 item max limit)
-Affected div(s): #nav, #nav_drawer, #toggle
-
-[wide]
-Flexible width layout
-
-[topic] or [portal]
-Enable styling for advanced templates such as portal or topic pages.
--->
-
 
 <?php 
 // Decalre php variables //
@@ -201,7 +168,7 @@ $mrqdir = "figures/mrq";
                 ?>
                 <br><br><h2>Resources</h2>
                 <li><a href="https://github.com/vistalab/mrQ/blob/master/README.md" target="_blank">MRQ Pipeline</a></li>
-                <li><a href="http://vistalab.stanford.edu/newlm/index.php/AFQ" target="_blank">AFQ Pipeline</a></li>
+                <li><a href="http://white.stanford..edu/newlm/index.php/AFQ" target="_blank">AFQ Pipeline</a></li>
                 <li><a href="http://scarlet.stanford.edu/nims" target="_blank">Vista Lab NIMS</a></li>
                 <li><a href="http://vistalab.stanford.edu" target="_blank">Stanford VISTA Lab</a></li>
                 <br><br><h2>Funding</h2>

@@ -102,7 +102,7 @@ $imndx = 1; // should be 0 or 1
          <hr>
               <p>
               <br>
-             <img src="http://nims.stanford.edu/wp-content/uploads/2013/08/NIMS_r2_100.png" alt="NIMS" width="100%" height="90px">
+             <img src="https://scarlet.stanford.edu/westonhavens/media/nims_banner_01.png" alt="NIMS" width="100%">
 <!--             <img src="http://scarlet.stanford.edu/westonhavens/results/examplelab/NIMS_banner.png" alt="NIMS" width="100%" height=90px>-->
 <!--             <img src="http://scarlet.stanford.edu/westonhavens/media/NIMS_bw.png" alt="NIMS" width="100%" height=90px>-->
               <p><span style="font-size:1.1em;">This is the main page for your experiment. Here you can view the progress of your data as it moves through the pipeline. You can view the results by clicking on the data identifier, wich will take you to the results page for that session. On each results page you will find links where you can download the processed data and figures.</span> </p>
