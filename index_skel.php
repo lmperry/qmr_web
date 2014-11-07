@@ -208,11 +208,19 @@ li {
     <!-- DATABASE'S DATA --> 
     <td>
     <ul>
-    <li>B-Value: 2000 </li>
-    <li>Diffusion Directions: 96</li> 
-    <li>Resolution: 2 x 2 x 2 <em>mm</em> </li>
-    <li>Noise Calculation Method: b0 <br>(standard deviation of b0)</li>
-    <li>Tensor Fit Method: rt <br>(robust tensor fit)</li>
+    <?php
+    if (file_exists("info_norms_dw.txt")) {
+        $text = file_get_contents("info_norms_dw.txt");
+        echo $text;
+    } else {
+        // Insert the standard set of values here (for the old comparissons);
+        echo "<li>B-Value: 2000 </li> 
+        <li>Diffusion Directions: 96</li>";
+    }
+    ?>
+        <li>Resolution: 2 x 2 x 2 <em>mm</em> </li>
+        <li>Noise Calculation Method: b0 <br>(standard deviation of b0)</li>
+        <li>Tensor Fit Method: rt <br>(robust tensor fit)</li>
     </ul>
   </td>
 </tr>
