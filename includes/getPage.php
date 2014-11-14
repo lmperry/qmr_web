@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-
-<html>
-
 <?php
+// This function will build a QMR page
+
+function getPage($thename,$this_page,$result_dir,$figures_base_dir) {
+
   // Load variables and functions from includes folder
   foreach (glob('includes/*.php') as $filename)
   {
-    include $filename;
+    include_once $filename;
   }
 
-  // Set page-specific variables after the load above - to overwrite defaults
-  $thename = "Fractional Anisotropy";
-  $this_page = $fadir;
-  $result_dir = $fadir;
-  $figures_base_dir = $figures_dir . "/";
 ?>
-
 
 <!-- HEAD -->
 <head>
@@ -81,13 +75,23 @@ in each of the display funcitons to default behavior.
 <!-- Buttons to toggle Visibility of element ids (ie, session ids)-->
 <p style="text-align:right">
   <?php
-    //echo "<b>Select session to view &nbsp;</b><br>";
-    foreach ($sessions as $s) 
+
+    // By default we display the buttons, unless it's non-diffusion.
+    $show_buttons = 1; 
+    if ($this_page == $t1dir || $this_page == $tvdir || $this_page == $sidir || $this_page == $mrqdir || $this_page == $dtidir)
+      { 
+        $show_buttons = 0; 
+      }
+
+    // Show buttons for each series
+    if ($show_buttons)
     {
-      echo "<button onClick=\"toggle('$s')\">" . $s . "</button> &nbsp;";
+      foreach ($sessions as $s) 
+      {
+        echo "<button onClick=\"toggle('$s')\">" . $s . "</button> &nbsp;";
+      }
     }
   ?>
-
 </p>
 
 <p>
@@ -110,8 +114,10 @@ in each of the display funcitons to default behavior.
       }
 
       // Show the session title
-      echo "<h5 style=\"text-align:right\" id=\"" . $s . "\">Session: <b>" . $s . "</b></h5>";
-
+      if ($show_buttons)
+      {
+        echo "<h5 style=\"text-align:right\" id=\"" . $s . "\">Series: <b>" . $s . "</b></h5>";
+      }
       // Show the summary figures                        
       getResultsFigures($s,$result_dir);
 
@@ -152,3 +158,6 @@ in each of the display funcitons to default behavior.
 
 </body>
 </html>
+<?php
+}
+?>
