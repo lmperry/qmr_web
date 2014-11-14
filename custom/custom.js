@@ -24,7 +24,7 @@ function switchvis(elid) {
 // Get a list of all the session ids and turn all the others off
 function toggle(elid) {
 	
-	console.log("this is the element id " + elid + " it has been set to block.");
+	//console.log("this is the element id " + elid + " it has been set to block.");
 	document.getElementById(elid).style.display = "block";
 
 	var target = document.getElementById("dom_target");

@@ -3,7 +3,7 @@
 
     function getSummaryFigures($session) {
       
-      include 'includes/variables.php';
+      include '/var/www/includes/variables.php';
 
       echo "<p><h3><a href=\"#\" id=\"figures\">Summary Figures</a></h3>";
       
@@ -34,14 +34,15 @@
             $path = explode('.', ${'i'});
             $imname = explode('/', $path[0]);
             
-            // Display the images --- note the imndx (this is for the filename and set in variables.php)
+            // Display the images 
             echo "<span style=\"text-align:left\";><h3><a href=\"${i}\">$imname[2]</a></h3></span>" ;
             echo "<a href=\"${i}\"><img src=\"${i}\" width=\"100%\" align=\"center\"</img></a>" ;
             echo "<p>&nbsp;</p><hr> &nbsp;";
           }
       }
 
-      // If the processing of AFQ is not complete then show the dti figures (I don't think we want this)
+      // If the processing of AFQ is not complete then show the dti figures 
+      // (I don't think we want this)
       if (is_dir($figures_dir . "/" . $session . "/" . strtolower($dtidir)) && (!file_exists($figures_dir . "/" . $session . "/" . $fibers_gif) )) {
         
         echo "<h2>DTI Images </h2>";
@@ -52,13 +53,12 @@
             $path = explode('.', ${'i'});
             $imname = explode('/', $path[0]);
             
-            // Display the images --- note the imndx (this is for the filename and set in variables.php)
+            // Display the images 
             echo "<span style=\"text-align:left\";><h3><a href=\"${i}\">$imname[3]</a></h3></span>" ;
             echo "<a href=\"${i}\"><img src=\"${i}\" width=\"100%\" align=\"center\"</img></a>" ;
             echo "<p>&nbsp;</p><hr> &nbsp;";
           }
       }
 
-    echo "</p>";
     }
 ?>

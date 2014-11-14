@@ -3,7 +3,7 @@
 
     function getGif($session) {
         
-        include 'includes/variables.php';
+        include '/var/www/includes/variables.php';
 
         // Get the full path to the gif file
         $thegif = $figures_dir . "/" . $session . "/" . $fibers_gif ;

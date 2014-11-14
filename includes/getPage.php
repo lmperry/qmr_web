@@ -4,7 +4,7 @@
 function getPage($thename,$this_page,$result_dir,$figures_base_dir) {
 
   // Load variables and functions from includes folder
-  foreach (glob('includes/*.php') as $filename)
+  foreach (glob('/var/www/includes/*.php') as $filename)
   {
     include_once $filename;
   }
@@ -32,7 +32,7 @@ function getPage($thename,$this_page,$result_dir,$figures_base_dir) {
 <div class="container">
 <div id="logo"><a href="http://stanford.edu"><img src="https://www.stanford.edu/su-identity/images/stanford-white@2x.png" alt="Stanford" width="160" height="34"></a></div>
 <div id="site">
-<div id="name"> <a href="../">Quantitative MRI of Tissue Properties in the Human Brain</a> </div>
+<div id="name"> <a href="<?php echo $link; ?>" target="_blank"><? echo $title; ?></a> </div>
 </div> <!-- site -->
 </div> <!-- container -->
 </div> 
@@ -53,6 +53,14 @@ function getPage($thename,$this_page,$result_dir,$figures_base_dir) {
 
 <!-- START MAIN PAGE CONTENT -->
 <hr>&nbsp;
+
+<!-- IF this is the lab index page, then show that baby -->
+<?php
+	if ($this_page == 'labindex') {
+		getIndexPage();
+		$show_buttons = 0;
+	}
+?>
 
 <!-- TODO: WHAT IF THERE ARE NO SESSIONS??? 
 See variables code: Sessions will be set to notexist, which will get the catch 
@@ -77,8 +85,7 @@ in each of the display funcitons to default behavior.
   <?php
 
     // By default we display the buttons, unless it's non-diffusion.
-    $show_buttons = 1; 
-    if ($this_page == $t1dir || $this_page == $tvdir || $this_page == $sidir || $this_page == $mrqdir || $this_page == $dtidir)
+    if ( $this_page == $mrqdir )
       { 
         $show_buttons = 0; 
       }
@@ -118,7 +125,19 @@ in each of the display funcitons to default behavior.
       {
         echo "<h5 style=\"text-align:right\" id=\"" . $s . "\">Series: <b>" . $s . "</b></h5>";
       }
-      // Show the summary figures                        
+      // Show the summary figures if this is the summary page
+      if ($result_dir == "summary") 
+      {
+	      // Show the gif
+	      getGif($s);
+
+	      // Show the table
+	      getTable($s);
+
+	      // Show the summary figures                        
+	      getSummaryFigures($s);
+      }
+
       getResultsFigures($s,$result_dir);
 
       // END DIV

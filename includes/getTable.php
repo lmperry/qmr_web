@@ -4,7 +4,7 @@
 
     function getTable($session) {
         
-        include 'includes/variables.php';
+        include '/var/www/includes/variables.php';
 
 ?>
             <h2 id="<? $session ?>"><a href="#" title="Back to top">Processing Info</a></h2>

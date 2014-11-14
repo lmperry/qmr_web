@@ -20,6 +20,7 @@
   $current_visual = "";
   $current_log    = "";
   $current_mrq    = "";
+  $current_dti    = "";
   
   // The filenames that hold the information to display
   $info_subject = "info_subject.txt";
@@ -33,6 +34,9 @@
   
   // should be 0 or 1 to choose filename for images
   $imndx = 1; 
+
+  // By default show the buttons - this will be turned on or off in getPage.
+  $show_buttons = 1; 
   
   // The zipped files for download
   $figureszip = $tcwf . "_figures.zip";
@@ -51,6 +55,10 @@
   $mrqdir = "mrq";
   $dtidir = "DTI";
   $lifedir = "LIFE";
+
+  // Main title link (opens in a new window)
+  $title = "Quantitative MRI of Tissue Properties in the Human Brain";
+  $link = "http://vistalab.stanford.edu/research/quantitative-mri-of-tissue-properties-in-the-human-brain/";
 
 
   // Get a list of Session directories from the DTI directory

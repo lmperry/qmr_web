@@ -6,9 +6,9 @@
   include_once "/var/www/includes/getPage.php";
 
   // Set page-specific variables after the load above - to overwrite defaults
-  $thename = "MRQ Maps";
-  $this_page = "mrq";
-  $result_dir = "mrq";
+  $thename = "Diffusion Processing";
+  $this_page = "dti";
+  $result_dir = "dti";
   $figures_base_dir = "figures/";
 
   // Call the get page function to build the actual page
