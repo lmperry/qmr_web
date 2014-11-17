@@ -44,7 +44,7 @@ function getSideBar($page_input) {
 
     ?>
     
-
+    <!-- BEGIN SIDEBAR -->
     <ul class="nav">
     <?php
     
@@ -54,6 +54,7 @@ function getSideBar($page_input) {
         ?>
         <hr>
         <br>
+
         <h2>View Data</h2>
         <?php
         $dirs = array_filter(glob('*'), 'is_dir');
@@ -63,7 +64,10 @@ function getSideBar($page_input) {
             $path = explode('.', ${'d'});
             echo "<li><a href=\"$d\">$d</a></li>";
         } 
-    } else // Display the results sidebar 
+
+
+      // Not lab index: Display the results sidebar   
+    } else 
       { ?>
         <hr><br><h2>Lab</h2>
         <a href="../"><?php echo "$labname<br>";?></a>
@@ -76,7 +80,7 @@ function getSideBar($page_input) {
             // Get the metadata for this subject, if it's there
             if (file_exists('meta.txt')) 
             {
-                echo  "<hr><br><br><h2>Subject Info</h2>";
+                echo  "<br><br><h2>Subject Info</h2>";
                 $text= file_get_contents('meta.txt');
                 echo "$text"; 
             }
@@ -85,7 +89,7 @@ function getSideBar($page_input) {
         <br><br>
         
         <h2>View Results</h2>
-
+            
                 <li class="<?php echo "$current_as";?>"><a href="index.php">Analysis Summary</a></li>
             
             <?php
