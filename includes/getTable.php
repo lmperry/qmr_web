@@ -43,27 +43,33 @@
                 </tr>
 
                 <!-- ROW 2 -->
-                <tr>
-                  <td><h4> mrQ Parameters</h4> </td>
-                  <!-- USER'S DATA -->
-                  <td>
-                    <ul>
-                    <?php
-                    if (file_exists($info_mrq)) {
-                        echo file_get_contents($info_mrq);
+                <?php
+                    // Only show this if the mrq file exists (ie. mrq was run)
+                    if(file_exists($info_mrq)) 
+                    {
+                ?>
+                    <tr>
+                      <td><h4> mrQ Parameters</h4> </td>
+                      <!-- USER'S DATA -->
+                      <td>
+                        <ul>
+                        <?php
+                            echo file_get_contents($info_mrq);
+                        ?>
+                        </ul>
+                        </td>
+                        <!-- DATABASE'S DATA -->
+                        <td>
+                        <ul>
+                        <li>Flip Angles: 4 10 20 30 <em>deg</em></li>
+                        <li>Inversion Times: 1200  50  2400  400 <em>msec</em></li>
+                        <li>Resolution: 1 x 1 x 1 <em>mm </em></li>
+                        </ul>
+                      </td>
+                    </tr>
+                <?php 
                     }
-                    ?>
-                    </ul>
-                    </td>
-                    <!-- DATABASE'S DATA -->
-                    <td>
-                    <ul>
-                    <li>Flip Angles: 4 10 20 30 <em>deg</em></li>
-                    <li>Inversion Times: 1200    50   2400   400 <em>msec</em></li>
-                    <li>Resolution: 1 x 1 x 1 <em>mm </em></li>
-                    </ul>
-                  </td>
-                </tr>
+                ?>
 
                 <!-- ROW 3 -->
                 <tr>
@@ -86,15 +92,8 @@
                     if (file_exists($dtidir . "/" . $session . "/" . $info_dw_norms)) {
                         $text = file_get_contents($dtidir . "/" . $session . "/" .  $info_dw_norms);
                         echo $text;
-                    } else {
-                        // Insert the standard set of values here (for the old comparissons);
-                        echo "<li>B-Value: 2000 </li>
-                        <li>Diffusion Directions: 96</li>";
-                    }
+                    } 
                     ?>
-                        <li>Resolution: 2 x 2 x 2 <em>mm</em> </li>
-                        <li>Noise Calculation Method: b0 <br>(standard deviation of b0)</li>
-                        <li>Tensor Fit Method: rt <br>(robust tensor fit)</li>
                     </ul>
                   </td>
                 </tr>
