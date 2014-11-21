@@ -69,7 +69,7 @@ function getSideBar($page_input) {
       // Not lab index: Display the results sidebar   
     } else 
       { ?>
-        <hr><br><h2>Lab</h2>
+        <hr><br><h2>Experiment</h2>
         <a href="../"><?php echo "$labname<br>";?></a>
         
         <br><br><h2>Data Identifier</h2>
