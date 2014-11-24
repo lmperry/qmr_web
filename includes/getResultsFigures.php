@@ -19,7 +19,7 @@
           $imname = explode('/', $path[0]);
           
           //echo "<span style=\"text-align:left\";><h3><a href=\"${i}\">$imname[3]</a></h3></span>" ;
-          echo "<a href=\"${i}\"><img src=\"${i}\" width=\"100%\" align=\"center\"</img></a>" ;
+          echo "<a href=\"${i}\"><img src=\"${i}\" width=\"100%\" align=\"center\" title=\"Dark gray bars are 1 standard deviation from the mean. Light gray bars are 2 standard deviations from the mean\"</img></a>" ;
           echo "<p>&nbsp;</p><hr> &nbsp;";
         }
       }
