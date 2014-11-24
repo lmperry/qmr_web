@@ -11,14 +11,13 @@ function getIndexPage() {
 	</p>
 	
 	<?php
-	
-	echo "<hr><h2>Data currently in the pipeline:</h2>";
-	
-	echo "<ul>";
-	
 	// Each directory should be a session
 	$dirs = array_filter(glob('*'), 'is_dir');
-	
+	$ndirs = count($dirs);
+
+	echo "<hr><h2>Data currently in the pipeline [$ndirs]:</h2>";
+	echo "<ul>";
+
 	foreach($dirs as $i) 
 	{
 	    echo "<li><h2><a href=\"$i\">$i</a></h2></li>" ;
