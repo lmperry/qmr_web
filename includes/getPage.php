@@ -11,7 +11,6 @@ function getPage($thename,$this_page,$result_dir,$figures_base_dir) {
 
 ?>
 
-<!-- HEAD -->
 <head>
   <?php
     // Get the head section from the php file (getHead.php)
@@ -27,16 +26,14 @@ function getPage($thename,$this_page,$result_dir,$figures_base_dir) {
 <div id="wrapper"> <!-- Start #wrapper -->
 
 
-<!-- Start #header -->
-<div id="header">
+<div id="header"> <!-- Start #header -->
 <div class="container">
 <div id="logo"><a href="http://stanford.edu"><img src="https://www.stanford.edu/su-identity/images/stanford-white@2x.png" alt="Stanford" width="160" height="34"></a></div>
 <div id="site">
 <div id="name"> <a href="<?php echo $link; ?>" target="_blank"><? echo $title; ?></a> </div>
 </div> <!-- site -->
 </div> <!-- container -->
-</div>
-<!-- END #header -->
+</div> <!-- END #header -->
 
 
 <!-- Start #container -->
@@ -54,7 +51,7 @@ function getPage($thename,$this_page,$result_dir,$figures_base_dir) {
 <!-- START MAIN PAGE CONTENT -->
 <hr>&nbsp;
 
-<!-- IF this is the lab index page, then show that baby -->
+<!-- If this is the experiment index page, then get index page -->
 <?php
 	if ($this_page == 'labindex') {
 		getIndexPage();
@@ -62,21 +59,20 @@ function getPage($thename,$this_page,$result_dir,$figures_base_dir) {
 	}
 ?>
 
-<!-- TODO: WHAT IF THERE ARE NO SESSIONS???
-See variables code: Sessions will be set to notexist, which will get the catch
-in each of the display funcitons to default behavior.
 
--->
+<!-- START HIDDEN DIV
+Place session numbers in a hidden element to allow the JS code to access the sessions
+and toggle visibility (see toggle funciton in custom.js)
+IF THERE ARE NO SESSIONS: See variables code - Sessions will be set to Still Working, which will 
+get trip the catch in each of the display funcitons and reset to default behavior. -->
 
-<!-- HIDDEN DIV: Place sessions in a hidden element to allow the JS code to access the sessions
-                 and toggle visibility (see toggle funciton in custom.js)-->
-<div id="dom_target" style="display:none"><?php //No space before this, or it will break!
+<div id="dom_target" style="display:none"><?php //<-- No spaces here, or it will break.
     foreach($sessions as $s)
     {
       echo stripcslashes($s . ",");
     }
-?></div>
-<br>
+?></div> <br>
+
 <!-- END HIDDEN DIV -->
 
 
@@ -107,11 +103,12 @@ in each of the display funcitons to default behavior.
     $count = 1;
     // For each session set the element id of the DIV to the session number
     // This will allow the buttons defined in the last section to toggle the
-    // visibility by setting that elemend id to display none.
+    // visibility by setting that elemend id to display none (using toggle.js).
     // The DIV is started and ended here in this loop.
     foreach($sessions as $s) {
-      // Use count to set display:block for the first elemend ID.
-      // This allows the first divid to be displayed when the page loads.
+      // Use count to set "display:block" for the first elemend ID.
+      // This allows the first divid to be displayed when the page loads, while
+      // the others load in the background.
       if($count == 1)
       {
         echo "<div style=\"display:block\" id=\"" . $s . "\">";
@@ -125,17 +122,26 @@ in each of the display funcitons to default behavior.
       {
         echo "<h5 style=\"text-align:right\" id=\"" . $s . "\">Series: <b>" . $s . "</b></h5>";
       }
-      // Show the summary figures if this is the summary page
+
+      // Show the gif, table and summary figures if this is the summary page
       if ($result_dir == "summary")
       {
-        // Check for the info_subject file - if it's there, then the run is done.
-        if (!file_exists($info_subject)) {
+        // Check for the info_subject file before displaying the summary page.
+        // If it's not there then we're still working. Display that.
+        if (!file_exists($info_subject)) 
+        {          
           echo "<h2>Still working...</h2>";
-          if (file_exists($logfile)) {
+          
+          // If the log file exists then show a link to it.
+          if (file_exists($logfile)) 
+          {
             echo "You can track progress by viewing the <a href=\"log.php\">log file.</a><br>&nbsp;";
           }
-        } else {
-    	      // Show the gif
+
+        // The run is complete - show the page.
+        } else 
+          {
+            // Show the gif
     	      getGif($s);
 
     	      // Show the table
@@ -143,14 +149,16 @@ in each of the display funcitons to default behavior.
 
     	      // Show the summary figures
     	      getSummaryFigures($s);
-
           }
       }
-      // Show the results figures (not the summary page).
+
+      // Not the summary page - Show the results figures (not the summary page).
       getResultsFigures($s,$result_dir);
 
-      // END DIV
+      // End the div for that session ($s).
       echo "</div>";
+      
+      // Increment the count and loop on
       $count++;
     }
   ?>
