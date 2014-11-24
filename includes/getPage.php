@@ -13,7 +13,7 @@ function getPage($thename,$this_page,$result_dir,$figures_base_dir) {
 
 <!-- HEAD -->
 <head>
-  <?php 
+  <?php
     // Get the head section from the php file (getHead.php)
     getHead();
   ?>
@@ -23,7 +23,7 @@ function getPage($thename,$this_page,$result_dir,$figures_base_dir) {
 <body class="sidebar-left">
 <div id="su-wrap"> <!-- #su-wrap start -->
 <div id="su-content"> <!-- #su-content start -->
-<div id="layout"> <!-- Start #layout -->       
+<div id="layout"> <!-- Start #layout -->
 <div id="wrapper"> <!-- Start #wrapper -->
 
 
@@ -35,7 +35,7 @@ function getPage($thename,$this_page,$result_dir,$figures_base_dir) {
 <div id="name"> <a href="<?php echo $link; ?>" target="_blank"><? echo $title; ?></a> </div>
 </div> <!-- site -->
 </div> <!-- container -->
-</div> 
+</div>
 <!-- END #header -->
 
 
@@ -62,18 +62,18 @@ function getPage($thename,$this_page,$result_dir,$figures_base_dir) {
 	}
 ?>
 
-<!-- TODO: WHAT IF THERE ARE NO SESSIONS??? 
-See variables code: Sessions will be set to notexist, which will get the catch 
+<!-- TODO: WHAT IF THERE ARE NO SESSIONS???
+See variables code: Sessions will be set to notexist, which will get the catch
 in each of the display funcitons to default behavior.
 
 -->
 
-<!-- HIDDEN DIV: Place sessions in a hidden element to allow the JS code to access the sessions 
+<!-- HIDDEN DIV: Place sessions in a hidden element to allow the JS code to access the sessions
                  and toggle visibility (see toggle funciton in custom.js)-->
 <div id="dom_target" style="display:none"><?php //No space before this, or it will break!
     foreach($sessions as $s)
     {
-      echo stripcslashes($s . ",");  
+      echo stripcslashes($s . ",");
     }
 ?></div>
 <br>
@@ -86,14 +86,14 @@ in each of the display funcitons to default behavior.
 
     // By default we display the buttons, unless it's non-diffusion.
     if ( $this_page == $mrqdir )
-      { 
-        $show_buttons = 0; 
+      {
+        $show_buttons = 0;
       }
 
     // Show buttons for each series
     if ($show_buttons)
     {
-      foreach ($sessions as $s) 
+      foreach ($sessions as $s)
       {
         echo "<button onClick=\"toggle('$s')\">" . $s . "</button> &nbsp;";
       }
@@ -106,18 +106,18 @@ in each of the display funcitons to default behavior.
   <?php
     $count = 1;
     // For each session set the element id of the DIV to the session number
-    // This will allow the buttons defined in the last section to toggle the 
-    // visibility by setting that elemend id to display none. 
+    // This will allow the buttons defined in the last section to toggle the
+    // visibility by setting that elemend id to display none.
     // The DIV is started and ended here in this loop.
     foreach($sessions as $s) {
       // Use count to set display:block for the first elemend ID.
       // This allows the first divid to be displayed when the page loads.
-      if($count == 1) 
+      if($count == 1)
       {
-        echo "<div style=\"display:block\" id=\"" . $s . "\">"; 
-      } else 
+        echo "<div style=\"display:block\" id=\"" . $s . "\">";
+      } else
       {
-        echo "<div style=\"display:none\" id=\"" . $s . "\">"; 
+        echo "<div style=\"display:none\" id=\"" . $s . "\">";
       }
 
       // Show the session title
@@ -126,28 +126,37 @@ in each of the display funcitons to default behavior.
         echo "<h5 style=\"text-align:right\" id=\"" . $s . "\">Series: <b>" . $s . "</b></h5>";
       }
       // Show the summary figures if this is the summary page
-      if ($result_dir == "summary") 
+      if ($result_dir == "summary")
       {
-	      // Show the gif
-	      getGif($s);
+        // Check for the info_subject file - if it's there, then the run is done.
+        if (!file_exists($info_subject)) {
+          echo "<h2>Still working...</h2>";
+          if (file_exists($logfile)) {
+            echo "You can track progress by viewing the <a href=\"log.php\">log file.</a><br>&nbsp;";
+          }
+        } else {
+    	      // Show the gif
+    	      getGif($s);
 
-	      // Show the table
-	      getTable($s);
+    	      // Show the table
+    	      getTable($s);
 
-	      // Show the summary figures                        
-	      getSummaryFigures($s);
+    	      // Show the summary figures
+    	      getSummaryFigures($s);
+
+          }
       }
-
+      // Show the results figures (not the summary page).
       getResultsFigures($s,$result_dir);
 
       // END DIV
       echo "</div>";
       $count++;
-    } 
+    }
   ?>
 </p>
 
-</div> 
+</div>
 <!-- End #center (Main page content) -->
 
 
@@ -180,3 +189,4 @@ in each of the display funcitons to default behavior.
 <?php
 }
 ?>
+

@@ -72,7 +72,8 @@
       $count++;
     }
   } else {
-    $sessions[1] = "doesnotexist";
+    $sessions[1] = "Still Working";
+    $show_buttons = 0;
   }
   
 
