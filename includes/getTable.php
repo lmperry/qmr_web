@@ -48,7 +48,7 @@
                 <!-- ROW 2 -->
                 <?php
                     // Only show this if the mrq file exists (ie. mrq was run)
-                    if(file_exists($info_mrq)) 
+                    if(file_exists(strtoupper($mrqdir) . '/' . $info_mrq)) 
                     {
                 ?>
                         <tr>
@@ -57,7 +57,7 @@
                           <td>
                             <ul>
                             <?php
-                                echo file_get_contents($info_mrq);
+                                echo file_get_contents(strtoupper($mrqdir) . '/' . $info_mrq);
                             ?>
                             </ul>
                             </td>
