@@ -129,8 +129,14 @@ get trip the catch in each of the display funcitons and reset to default behavio
         // Check for the info_subject file before displaying the summary page.
         // If it's not there then we're still working. Display that.
         if (!file_exists($info_subject)) 
-        {          
-          echo "<h2>Still working...</h2>";
+        { 
+          if (file_exists($error_file))
+          {
+            echo "<h2>An error occurred during processing</h2>";
+          }  else
+            {
+              echo "<h2>Still working...</h2>";
+            }         
           
           // If the log file exists then show a link to it.
           if (file_exists($logfile)) 

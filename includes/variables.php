@@ -31,6 +31,7 @@
   $info_mrq = "info_mrq.txt";
   $logfile = "log";
   $fibers_gif = "000_RotatingFibers.gif";
+  $error_file = "error";
   
   // should be 0 or 1 to choose filename for images
   $imndx = 1; 
