@@ -3,7 +3,7 @@
 
   // The current working folder (the session name)
   $tcwf = basename(getcwd());
-  
+
   // TODO: Make sure that this works for each of the sub-pages
   $labdir = dirname(getcwd());
   $labname = basename($labdir);
@@ -21,7 +21,7 @@
   $current_log    = "";
   $current_mrq    = "";
   $current_dti    = "";
-  
+
   // The filenames that hold the information to display
   $info_subject = "info_subject.txt";
   $info_methods = "info_methods.txt";
@@ -32,13 +32,13 @@
   $logfile = "log";
   $fibers_gif = "000_RotatingFibers.gif";
   $error_file = "error";
-  
+
   // should be 0 or 1 to choose filename for images
-  $imndx = 1; 
+  $imndx = 1;
 
   // By default show the buttons - this will be turned on or off in getPage.
-  $show_buttons = 1; 
-  
+  $show_buttons = 1;
+
   // The zipped files for download
   $figureszip = $tcwf . "_figures.zip";
   $datazip = $tcwf . "_data.zip";
@@ -73,9 +73,9 @@
       $count++;
     }
   } else {
-    $sessions[1] = "Still Working";
+    $sessions[1] = "Working...";
     $show_buttons = 0;
   }
-  
+
 
 ?>

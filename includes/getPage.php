@@ -132,7 +132,7 @@ get trip the catch in each of the display funcitons and reset to default behavio
         { 
           if (file_exists($error_file))
           {
-            echo "<h2>An error occurred during processing</h2>";
+            echo "<h2>An error occurred during processing. Please view the logfile for more information.</h2>";
           }  else
             {
               echo "<h2>Still working...</h2>";

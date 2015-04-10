@@ -9,6 +9,12 @@
       $summary_dir = $figures_dir . "/" . $session . "/" ;
       // TODO: Check if this dir exists.
 
+      // If the summary_dir does not exist but the mrq dir does then let's display that.
+      if (!is_dir($summary_dir)) 
+      {
+        $summary_dir = $figures_dir . "/" . $mrqdir . "/" ;
+      }
+
       // display the summary figures at the top level of the figures directory
       $images = glob($summary_dir . "*.png");
 
