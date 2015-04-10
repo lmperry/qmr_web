@@ -1,1 +1,1 @@
-/var/www/westonhavens/log_skel.php
+/scarlet/westonhavens/code/qmr_web/log_skel.php

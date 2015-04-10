@@ -2,3 +2,32 @@
 #sidebar-left {letter-spacing: 0px}
 #header #logo {vertical-align: top}
 #header #site {width: auto}
+
+/* Styling for Table */
+
+table,th,td {
+	border:1px solid lightgray;
+	/*border-collapse:collapse;*/
+}
+
+th,td {
+	padding:5px;
+	vertical-align:top;
+}
+
+table {
+	width:100%;
+}
+
+ul {
+    line-height:1.3em;
+    list-style-type:circle;
+}
+li {
+    font-size:1.1em;
+}
+
+/* Button and layout */
+button {
+	padding: 10px;
+}
